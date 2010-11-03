@@ -1,0 +1,7 @@
+Jörn Zaefferer’s (now deprecated) jQuery plugin, with a small modification to enable UP/DOWN arrow keys to allow navigation of input element text. This is particularly useful in cases where autocomplete is used in a textarea element where navigation of text via UP/DOWN arrow keys may be necessary.
+
+As with the original Plugin, this modification is dual licensed under the MIT and GPL licenses:
+	http://www.opensource.org/licenses/mit-license.php
+	http://www.gnu.org/licenses/gpl.html
+
+The original plugin is now deprecated, but it —and this mod— works well (at least up to jQuery 1.4.3).
