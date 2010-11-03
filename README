@@ -1,7 +1,15 @@
-Jörn Zaefferer’s (now deprecated) jQuery plugin, with a small modification to enable UP/DOWN arrow keys to allow navigation of input element text. This is particularly useful in cases where autocomplete is used in a textarea element where navigation of text via UP/DOWN arrow keys may be necessary.
+Jörn Zaefferer’s (now deprecated) jQuery Autocomplete Plugin (http://bassistance.de/jquery-plugins/jquery-plugin-autocomplete/), with a small modification to enable UP/DOWN arrow keys, allowing navigation of input element text. This is particularly useful in cases where autocomplete is used in a textarea element where navigation of text via UP/DOWN arrow keys may be necessary.
+
+We use it in Claritty.com for when a user wants to write a twitter username or a previously used hashtag within a new tweet, so “@” and “#” are trigger the script. While not triggered, though, the plugin still hijacks the UP/DOWN arrow keys making navigation of the text a pain in the ass when the user has multiple lines. This modification prevents this behavior, hijacking the arrow keys only when the autocomplete script has been triggered.
 
 As with the original Plugin, this modification is dual licensed under the MIT and GPL licenses:
 	http://www.opensource.org/licenses/mit-license.php
 	http://www.gnu.org/licenses/gpl.html
 
 The original plugin is now deprecated, but it —and this mod— works well (at least up to jQuery 1.4.3).
+
+Introduction to the original plugin, plus some demos, here: http://docs.jquery.com/Plugins/Autocomplete
+
+An overview and thorough explanation of original plugin options here: http://docs.jquery.com/Plugins/Autocomplete/autocomplete
+
+This modification shouldn’t break any of the options discussed at the links above.
