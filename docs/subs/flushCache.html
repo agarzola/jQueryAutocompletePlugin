@@ -1,0 +1,374 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"> 
+	<head> 
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
+		<meta name="keywords" content="Plugins/Autocomplete,Plugins/Autocomplete/setOptions,Plugins/Autocomplete/flushCache,Plugins/Autocomplete/search,Plugins/Autocomplete/result,Plugins/Autocomplete/autocomplete" /> 
+		<title>Plugins/Autocomplete - jQuery JavaScript Library</title> 
+		<link rel="stylesheet" href="../css/reset.css" type="text/css" /> 
+		<link rel="stylesheet" href="../css/screen.css" type="text/css" /> 
+		<link rel="stylesheet" href="../css/main.css" type="text/css" />
+		<link rel="stylesheet" href="../css/jquery.tabs.css" type="text/css" /> 
+		<!--[if lte IE 7]>
+		<link rel="stylesheet" href="../css/jquery.tabs-ie.css" type="text/css" media="projection, screen"/>
+		<![endif]--> 
+ 
+		<script type="text/javascript" src="../js/jquery.min.js"></script> 
+		<script src="../js/jquery.tabs.js"></script> 
+ 
+		<script>$(function(){
+			$("div[id=examples]").each(function(){
+				$(this).siblings("div:first").find("div.desc").after(
+					$(this).find("div.example:has(#demo):first").remove().clone());
+ 
+				if ( !$("div.example", this).length )
+					$(this).remove();
+			});
+ 
+			$("div.entry")
+				.children("p").remove().end()
+				.find("ul:first li").each(function(){
+					if ( !$(this).parent().siblings( $("a",this).attr("href") ).length )
+						$(this).remove();
+				}).end()
+				.not(".ui")
+				.tabs();
+ 
+			$("div.args > br").remove();
+ 
+			$("div.example")
+				.children("p").remove().end()
+				.tabs();
+ 
+			var keywords = "String,Number,Object,Options,Array,Function,Callback,Selector,Event,Element,Integer,Float,Boolean".split(",");
+ 
+			$("td.default span, td.type").each(function(){
+				var html = this.innerHTML;
+				jQuery.each(keywords, function(i,key){
+					html = html.replace(new RegExp(key, "ig"), "<a href='/Types#" + key + "'>" + key + "</a>");
+				});
+				this.innerHTML = html;
+			});
+ 
+			$("div[id=source]").each(function(){
+				var source = $("pre", this).html()
+					.replace(/<\/?a.*?>/ig, "")
+					.replace(/<\/?strong.*?>/ig, "")
+					.replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&");
+ 
+				//var items = [];
+				//source = source.replace(/\s*<(link|script).*?>\s\*/g, function(m){
+					//items.push(m);
+					//return "";
+				//}).replace("</head>", items.join("") + "</head>")
+				//*/
+ 
+				var iframe = document.createElement("iframe");
+				iframe.src = "/index-blank.html";
+				iframe.width = "100%";
+				iframe.height = $(this).prev().attr("rel") || "125";
+				iframe.style.border = "none";
+				$(this).prev().append(iframe);
+ 
+ 
+				$(window).load(function(){
+					var doc = iframe.contentDocument || iframe.contentWindow.document;
+					  source = source
+					          .replace(/<script>([^<])/g,"<script>window.onload = (function(){\ntry{$1")
+					          .replace(/([^>])<\/sc/g,  '$1\n}catch(e){}});</sc');
+ 
+					    source = source
+					            .replace("</head>", "<style>html,body{border:0; margin:0; padding:0;}</style></head>");
+ 
+					doc.open();
+					doc.write( source );
+					doc.close();
+				});
+ 
+			});
+		});</script> 
+		<script type="text/javascript" src="http://static.jquery.com/files/rocker/scripts/custom.js"></script> 
+		<link rel="stylesheet" type="text/css" media="print" href="../css/commonPrint.css" /> 
+		<!--[if lt IE 5.5000]><style type="text/css">@import "/skins/monobook/IE50Fixes.css";</style><![endif]--> 
+		<!--[if IE 5.5000]><style type="text/css">@import "/skins/monobook/IE55Fixes.css";</style><![endif]--> 
+		<!--[if IE 6]><style type="text/css">@import "/skins/monobook/IE60Fixes.css";</style><![endif]--> 
+		<!--[if IE 7]><style type="text/css">@import "/skins/monobook/IE70Fixes.css?1";</style><![endif]--> 
+		<!--[if lt IE 7]><script type="text/javascript" src="/skins/common/IEFixes.js"></script>
+		<meta http-equiv="imagetoolbar" content="no" /><![endif]--> 
+		
+		<!-- Head Scripts --> 
+			</head> 
+	<body id="jq-interior"  class="mediawiki ns-0 ltr"> 
+ 
+	<div id="jq-siteContain"> 
+			<div id="jq-header"> 
+				<a id="jq-siteLogo" href="http://jquery.com/" title="jQuery Home"><img src="../img/logo_jquery_215x53.gif" width="215" height="53" alt="jQuery: Write Less, Do More." /></a> 
+ 
+				<div id="jq-primaryNavigation"> 
+ 
+					<ul> 
+<li class="jq-jquery jq-current"><a href="http://jquery.com/" title="jQuery Home">jQuery</a></li> 
+<li class="jq-plugins"><a href="http://plugins.jquery.com/" title="jQuery Plugins">Plugins</a></li> 
+<li class="jq-ui"><a href="http://jqueryui.com/" title="jQuery UI">UI</a></li> 
+<li class="jq-meetup"><a href="http://meetups.jquery.com/" title="jQuery Meetups">Meetups</a></li> 
+<li class="jq-forum"><a href="http://forum.jquery.com/" title="jQuery Forum">Forum</a></li> 
+<li class="jq-blog"><a href="http://blog.jquery.com/" title="jQuery Blog">Blog</a></li> 
+<li class="jq-about"><a href="http://jquery.org/about" title="About jQuery">About</a></li> 
+<li class="jq-donate"><a href="http://jquery.org/donate" title="Donate to jQuery">Donate</a></li> 
+					</ul> 
+				</div><!-- /#primaryNavigation --> 
+ 
+				<div id="jq-secondaryNavigation"> 
+					<ul> 
+						<li class="jq-download jq-first"><a href="http://docs.jquery.com/Downloading_jQuery">Download</a></li> 
+						<li class="jq-documentation jq-current"><a href="http://docs.jquery.com/">Documentation</a></li> 
+						<li class="jq-tutorials"><a href="http://docs.jquery.com/Tutorials">Tutorials</a></li> 
+ 
+						<li class="jq-bugTracker"><a href="http://dev.jquery.com/">Bug Tracker</a></li> 
+						<li class="jq-discussion jq-last"><a href="http://docs.jquery.com/Discussion">Discussion</a></li> 
+					</ul> 
+				</div><!-- /#secondaryNavigation --> 
+ 
+				
+ 
+				<h1>Documentation</h1> 
+ 
+				<form id="jq-primarySearchForm" action="/Special:Search"> 
+ 
+					<div> 
+						<input type="hidden" value="1" name="ns0"/> 
+						<label for="primarySearch">Search <span class="jq-jquery">jQuery</span></label> 
+						<input type="text" value="" accesskey="f" title="Search jQuery" name="search" id="jq-primarySearch"/> 
+						<button type="submit" name="go" id="jq-searchGoButton"><span>Go</span></button> 
+					</div> 
+ 
+				</form> 
+ 
+			</div><!-- /#header --> 
+ 
+			<div id="jq-content" class="jq-clearfix"> 
+ 
+				<div id="jq-interiorNavigation"> 
+					<div class='jq-portlet' id='jq-p-Getting-Started'> 
+						<h5>Getting Started</h5> 
+						<div class='jq-pBody'> 
+ 
+							<ul> 
+ 
+								<li id="jq-n-Main-Page"><a href="/Main_Page">Main Page</a></li> 
+								<li id="jq-n-Downloading-jQuery"><a href="/Downloading_jQuery">Downloading jQuery</a></li> 
+				
+								<li id="jq-n-How-jQuery-Works"><a href="/How_jQuery_Works">How jQuery Works</a></li> 
+								<li id="jq-n-FAQ"><a href="/Frequently_Asked_Questions">FAQ</a></li> 
+								<li id="jq-n-Tutorials"><a href="/Tutorials">Tutorials</a></li> 
+ 
+								<li id="jq-n-Using-jQuery-with-Other-Libraries"><a href="/Using_jQuery_with_Other_Libraries">Using jQuery with Other Libraries</a></li> 
+ 
+								<li id="jq-n-Variable-Types"><a href="/Types">Variable Types</a></li> 
+							</ul> 
+				
+						</div> 
+					</div> 
+						<div class='jq-portlet' id='jq-p-API-Reference'> 
+						<h5>API Reference</h5> 
+ 
+						<div class='jq-pBody'> 
+ 
+							<ul> 
+								<li id="jq-n-jQuery-Core"><a href="/Core">jQuery Core</a></li> 
+								<li id="jq-n-Selectors"><a href="/Selectors">Selectors</a></li> 
+				
+								<li id="jq-n-Attributes"><a href="/Attributes">Attributes</a></li> 
+								<li id="jq-n-Traversing"><a href="/Traversing">Traversing</a></li> 
+								<li id="jq-n-Manipulation"><a href="/Manipulation">Manipulation</a></li> 
+ 
+								<li id="jq-n-CSS"><a href="/CSS">CSS</a></li> 
+								<li id="jq-n-Events"><a href="/Events">Events</a></li> 
+								<li id="jq-n-Effects"><a href="/Effects">Effects</a></li> 
+				
+								<li id="jq-n-Ajax"><a href="/Ajax">Ajax</a></li> 
+								<li id="jq-n-Utilities"><a href="/Utilities">Utilities</a></li> 
+								<li id="jq-n-jQuery-UI"><a href="/UI">jQuery UI</a></li> 
+ 
+							</ul> 
+						</div> 
+					</div> 
+						<div class='jq-portlet' id='jq-p-Plugins'> 
+				
+						<h5>Plugins</h5> 
+						<div class='jq-pBody'> 
+							<ul> 
+								<li id="jq-n-Plugin-Repository"><a href="http://jquery.com/plugins/">Plugin Repository</a></li> 
+ 
+								<li id="jq-n-Authoring"><a href="/Plugins/Authoring">Authoring</a></li> 
+							</ul> 
+						</div> 
+				
+					</div> 
+						<div class='jq-portlet' id='jq-p-Support'> 
+						<h5>Support</h5> 
+						<div class='jq-pBody'> 
+ 
+							<ul> 
+ 
+								<li id="jq-n-Mailing-List-and-Chat"><a href="/Discussion">Mailing List and Chat</a></li> 
+								<li id="jq-n-Submit-New-Bug"><a href="http://jquery.com/dev/bugs/new/">Submit New Bug</a></li> 
+								<li id="jq-n-Commercial-Support"><a href="/Commercial_Support">Commercial Support</a></li> 
+				
+							</ul> 
+						</div> 
+					</div> 
+						<div class='jq-portlet' id='jq-p-About-jQuery'> 
+ 
+						<h5>About jQuery</h5> 
+ 
+						<div class='jq-pBody'> 
+							<ul> 
+								<li id="jq-n-Contributors"><a href="/Contributors">Contributors</a></li> 
+				
+								<li id="jq-n-History-of-jQuery"><a href="/History_of_jQuery">History of jQuery</a></li> 
+								<li id="jq-n-Sites-Using-jQuery"><a href="/Sites_Using_jQuery">Sites Using jQuery</a></li> 
+ 
+								<li id="jq-n-Browser-Compatibility"><a href="/Browser_Compatibility">Browser Compatibility</a></li> 
+								<li id="jq-n-License"><a href="/Licensing">Licensing</a></li> 
+ 
+								<li id="jq-n-Donate"><a href="/Donate">Donate</a></li> 
+							</ul> 
+				
+						</div> 
+					</div> 
+						
+	<div class="jq-portlet" id="p-tb"> 
+		<h5>Toolbox</h5> 
+		<div class="jq-pBody"> 
+			<ul> 
+				<li id="t-whatlinkshere"><a href="/index.php?title=Special:Whatlinkshere&amp;target=Plugins%2FAutocomplete">What links here</a></li> 
+				<li id="t-recentchangeslinked"><a href="/index.php?title=Special:Recentchangeslinked&amp;target=Plugins%2FAutocomplete">Related changes</a></li> 
+<li id="t-upload"><a href="/Special:Upload">Upload file</a></li> 
+<li id="t-specialpages"><a href="/Special:Specialpages">Special pages</a></li> 
+				<li id="t-print"><a href="/action/render/Plugins/Autocomplete">Printable version</a></li>				<li id="t-permalink"><a href="/index.php?title=Plugins/Autocomplete&amp;oldid=16741">Permanent link</a></li>			</ul> 
+		</div> 
+	</div> 
+ 
+	<div id="jq-p-cactions" class="jq-portlet"> 
+		<h5>Views</h5> 
+		<div class="jq-pBody"> 
+		<ul> 
+				 <li id="jq-ca-nstab-main" class="selected"><a href="/Plugins/Autocomplete">Article</a></li> 
+				 <li id="jq-ca-talk" class="new"><a href="/action/edit/Talk:Plugins/Autocomplete">Discussion</a></li> 
+				 <li id="jq-ca-edit"><a href="/action/edit/Plugins/Autocomplete">Edit</a></li> 
+				 <li id="jq-ca-history"><a href="/action/history/Plugins/Autocomplete">History</a></li> 
+		</ul> 
+		</div> 
+	</div> 
+	<div class="jq-portlet" id="jq-p-personal"> 
+		<h5>Personal tools</h5> 
+		<div class="jq-pBody"> 
+			<ul> 
+				<li id="jq-pt-login"><a href="/index.php?title=Special:Userlogin&amp;returnto=Plugins/Autocomplete">Log in / create account</a></li> 
+			</ul> 
+		</div> 
+	</div> 
+ 
+					
+				</div><!-- /#interiorNavigation --> 
+ 
+ 
+ 
+ 
+ 
+				<div id="jq-primaryContent"> 
+		<div id="column-content"> 
+	<div id="docs-content"> 
+		<a name="top" id="top"></a> 
+						<!--<div style="background:#efefff; border:#9f9fff 1px solid; padding: 10px;"><strong>UPDATE:</strong> The jQuery API documentation has been completely rewritten and moved to <a href="http://api.jquery.com/">api.jquery.com</a>. More details <a href="http://jquery14.com/pre-release-1/new-jquery-api-site">can be found on the jQuery blog</a>.</div>--> 
+				<h1 class="firstHeading">Plugins/Autocomplete/flushCache</h1> 
+				<div id="bodyContent"> 
+					<h3 id="siteSub">From jQuery JavaScript Library</h3> 
+					<div id="contentSub"></div> 
+											<div id="jump-to-nav">Jump to: <a href="#column-one">navigation</a>, <a href="#searchInput">search</a></div>			<!-- start content --> 
+					<p>&laquo; <a href="../index.html" title="Plugins/Autocomplete">Back to Plugins/Autocomplete</a><div class="api"><div> 
+		</div><a name=""></a><div class="section-edit">[<a href="/action/edit/Plugins/Autocomplete/flushCache">edit</a>]</div> 
+		</p> 
+		<a name="flushCache.28_.29"></a><h3> <strong class="selflink">flushCache</strong>( ) </h3> 
+		<p><div class="entry"> 
+		<ul class="tabs-nav"> 
+		<li><a href="#overview"><span>Overview</span></a></li> 
+		<li><a href="#toptions"><span>Options</span></a></li> 
+		<li><a href="#examples"><span>Examples</span></a></li> 
+		<li><a href="#discuss" class="tabs-disabled"><span>Discuss</span></a></li> 
+		</ul> 
+		<div id="overview" class="tabs-container"> 
+		</p> 
+		<div class="desc"><div>Flush (empty) the cache of matched input's autocompleters.</div> 
+		<div class="longdesc"></div></div> </div> 
+		<p><br /> 
+		<div id="examples" class="options examples tabs-container"><b class="options">Examples:</b><table class="options examples" cellspacing="0"><thead><tr><th>Name</th><th>Type</th></tr></thead><tbody> 
+		</p><p><div class="example"> 
+		<ul><li><a href="#code"><span>Code</span></a></li></ul> 
+		<div id="code" class="tabs-container"> 
+		Flush the cache of #suggest.<br /> 
+		</p> 
+		<pre><a href="/Core/%24" title="Core/$">$</a>('input#suggest').<strong class="selflink">flushCache</strong>();
+		</pre> 
+		<p></div> 
+		</p><p></div> 
+		</p><p></tbody></table></div> 
+		</p><p><br /> 
+		</div></div> 
+		</p><!-- 
+		Pre-expand include size: 8279 bytes
+		Post-expand include size: 4133 bytes
+		Template argument size: 1881 bytes
+		Maximum: 2097152 bytes
+		--> 
+
+		<!-- Saved in parser cache with key jqdocs_docs:pcache:idhash:2556-0!1!0!!en!2 and timestamp 20100825132631 --> 
+		<div class="printfooter"> 
+		Retrieved from "<a href="http://docs.jquery.com/Plugins/Autocomplete/flushCache">http://docs.jquery.com/Plugins/Autocomplete/flushCache</a>"</div> 
+					<div id="catlinks"><p class='catlinks'><a href="/index.php?title=Special:Categories&amp;article=Plugins%2FAutocomplete%2FflushCache" title="Special:Categories">Categories</a>: <span dir='ltr'><a href="/action/edit/Category:Plugins/Autocomplete/flushCache" class="new" title="Category:Plugins/Autocomplete/flushCache">Plugins/Autocomplete/flushCache</a></span> | <span dir='ltr'><a href="/action/edit/Category:API" class="new" title="Category:API">API</a></span> | <span dir='ltr'><a href="/action/edit/Category:Core/%24" class="new" title="Category:Core/$">Core/$</a></span></p></div>			<!-- end content --> 
+					<div class="visualClear"></div> 
+				</div> 
+		
+		</div> <!--docs-content-->
+		</div> 
+ 
+				</div><!-- /#primaryContent --> 
+ 
+				
+				
+				
+			</div><!-- /#content --> 
+ 
+ 
+			<div id="jq-footer" class="jq-clearfix"> 
+ 
+				<div id="jq-credits"> 
+				<p id="jq-copyright">&copy; 2010 <a href="http://jquery.org/">The jQuery Project</a></p> 
+				<p id="jq-hosting">Sponsored by <a href="http://mediatemple.net" class="jq-mediaTemple">Media Temple</a> and <a href="http://jquery.org/sponsors">others</a>.</p> 
+				</div> 
+ 
+				<div id="jq-footerNavigation"> 
+					<ul> 
+						<li class="jq-download jq-first"><a href="http://docs.jquery.com/Downloading_jQuery">Download</a></li> 
+						<li class="jq-documentation jq-current"><a href="http://docs.jquery.com/">Documentation</a></li> 
+						<li class="jq-tutorials"><a href="http://docs.jquery.com/Tutorials">Tutorials</a></li> 
+						<li class="jq-bugTracker"><a href="http://dev.jquery.com/">Bug Tracker</a></li> 
+						<li class="jq-discussion jq-last"><a href="http://docs.jquery.com/Discussion">Discussion</a></li> 
+					</ul> 
+				</div><!-- /#secondaryNavigation --> 
+				
+			</div><!-- /#footer --> 
+ 
+ 
+	</div><!-- /#siteContain --> 
+ 
+<script type="text/javascript"> 
+var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-1076265-1']); _gaq.push(['_trackPageview']); _gaq.push(['_setDomainName', '.jquery.com']);
+(function() {var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);})();
+</script> 
+	</body> 
+<!-- Cached 20100825132601 --> 
+</html> 
