@@ -1,5 +1,5 @@
 /*
- * jQuery Autocomplete plugin 1.1.1
+ * jQuery Autocomplete plugin 1.2
  *
  * Copyright (c) 2009 Jörn Zaefferer
  *
@@ -7,12 +7,9 @@
  *   http://www.opensource.org/licenses/mit-license.php
  *   http://www.gnu.org/licenses/gpl.html
  *
- * With a small modification by Alfonso Gómez-Arzola to
- * enable UP/DOWN arrow keys when navigating text within
- * input element. Particularly useful for textareas.
- * Only lines 105-106 & 114-115 were changed.
+ * With a small modifications by Alfonso Gómez-Arzola.
+ * See changelog for details.
  *
- * Revision: $Id: jquery.autocomplete.js 15 2009-08-22 10:30:27Z joern.zaefferer $
  */
 
 ;(function($) {
@@ -194,7 +191,7 @@ $.Autocompleter = function(input, options) {
 	}).bind("flushCache", function() {
 		cache.flush();
 	}).bind("setOptions", function() {
-		$.extend(options, arguments[1]);
+		$.extend(true, options, arguments[1]);
 		// if we've updated the data, repopulate
 		if ( "data" in arguments[1] )
 			cache.populate();

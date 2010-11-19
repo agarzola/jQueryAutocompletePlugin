@@ -1,3 +1,7 @@
+1.2 --AGA
+---
+* Use recursive merging when extending setOptions. (Request/recommendation by smarques.)
+
 1.1.1 --AGA
 ---
 * Changed hijacking of UP/DOWN arrow keys to prevent default behavior only when selections list is visible. Helps text navigation inside input element.
