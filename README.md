@@ -13,15 +13,13 @@ Introduction to the original plugin, and an explanation of original plugin optio
 This modification shouldn’t break any of the options discussed at the these documentation files.
 
 ##Abridged Changelog##
-1.2 --AGA
----
+####1.2 --AGA####
 * Use recursive merging when extending setOptions. (Request/recommendation by smarques.)
 
-1.1.1 --AGA
----
+####1.1.1 --AGA####
 * Changed hijacking of UP/DOWN arrow keys to prevent default behavior only when selections list is visible. Helps text navigation inside input element.
 
-_See changelog.txt for pre-1.1.1 entries by original author._
+_See_ changelog.txt _for pre-1.1.1 entries by original author._
 
 ##Licensing##
 As with the original Plugin, this modification is dual licensed under the MIT and GPL licenses:
