@@ -13,6 +13,9 @@ Introduction to the original plugin, and an explanation of original plugin optio
 This modification shouldn’t break any of the options discussed at the these documentation files.
 
 ##Abridged Changelog##
+####1.2.1 --AGA####
+* Added option to forgo input focus on item select. `inputFocus` is set to true by default, but setting it to false in the options will cancel this behavior.
+
 ####1.2 --AGA####
 * Use recursive merging when extending setOptions. (Request/recommendation by smarques.)
 
