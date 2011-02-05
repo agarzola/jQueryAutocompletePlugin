@@ -1,4 +1,4 @@
-#jQuery Autocomplete Plugin 1.2#
+#jQuery Autocomplete Plugin 1.2.1#
 
 ##About this jQuery plugin##
 Jörn Zaefferer’s (now deprecated into jQuery UI) [jQuery Autocomplete Plugin](http://bassistance.de/jquery-plugins/jquery-plugin-autocomplete/), with a small modification to enable UP/DOWN arrow keys, allowing navigation of input element text. This is particularly useful in cases where autocomplete is used in a textarea element where navigation of text via UP/DOWN arrow keys may be necessary. The tiny fix is documented with comments in the relevant lines on the development file (jquery.autocomplete.js). The .min and .pack files have the fix without specific annotation within the code.
@@ -14,7 +14,8 @@ This modification shouldn’t break any of the options discussed at the these do
 
 ##Abridged Changelog##
 ####1.2.1 --AGA####
-*Added option to activate select list with one click instead of two. `clickFire` is false by default. (Requested/recommendation by fgosfacdjtq.)
+* Added option to activate select list with one click instead of two. `clickFire` is false by default. (Requested/recommendation by fgosfacdjtq.)
+
 * Added option to forgo input focus on item select. `inputFocus` is set to true by default, but setting it to false in the options will cancel this behavior.
 
 ####1.2 --AGA####
