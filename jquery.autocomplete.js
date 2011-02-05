@@ -1,5 +1,5 @@
 /*
- * jQuery Autocomplete plugin 1.2
+ * jQuery Autocomplete plugin 1.2.1
  *
  * Copyright (c) 2009 Jörn Zaefferer
  *
@@ -7,7 +7,7 @@
  *   http://www.opensource.org/licenses/mit-license.php
  *   http://www.gnu.org/licenses/gpl.html
  *
- * With a small modifications by Alfonso Gómez-Arzola.
+ * With small modifications by Alfonso Gómez-Arzola.
  * See changelog for details.
  *
  */
@@ -160,7 +160,7 @@ $.Autocompleter = function(input, options) {
 		// results if the field no longer has focus
 		hasFocus++;
 	}).blur(function() {
-		hasFocus = 0;
+	  hasFocus = 0;
 		if (!config.mouseDownOnSelect) {
 			hideResults();
 		}
@@ -427,6 +427,7 @@ $.Autocompleter.defaults = {
 	width: 0,
 	multiple: false,
 	multipleSeparator: " ",
+	inputFocus: true,
 	highlight: function(value, term) {
 		return value.replace(new RegExp("(?![^&;]+;)(?!<[^<>]*)(" + term.replace(/([\^\$\(\)\[\]\{\}\*\.\+\?\|\\])/gi, "\\$1") + ")(?![^<>]*>)(?![^&;]+;)", "gi"), "<strong>$1</strong>");
 	},
@@ -604,8 +605,8 @@ $.Autocompleter.Select = function (options, input, select, config) {
 		}).click(function(event) {
 			$(target(event)).addClass(CLASSES.ACTIVE);
 			select();
-			// TODO provide option to avoid setting focus again after selection? useful for cleanup-on-focus
-			input.focus();
+			if( options.inputFocus )
+			  input.focus();
 			return false;
 		}).mousedown(function() {
 			config.mouseDownOnSelect = true;
