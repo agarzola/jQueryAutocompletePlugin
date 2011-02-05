@@ -14,6 +14,7 @@ This modification shouldn’t break any of the options discussed at the these do
 
 ##Abridged Changelog##
 ####1.2.1 --AGA####
+*Added option to activate select list with one click instead of two. `clickFire` is false by default. (Requested/recommendation by fgosfacdjtq.)
 * Added option to forgo input focus on item select. `inputFocus` is set to true by default, but setting it to false in the options will cancel this behavior.
 
 ####1.2 --AGA####

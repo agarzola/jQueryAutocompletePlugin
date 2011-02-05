@@ -166,8 +166,16 @@ $.Autocompleter = function(input, options) {
 		}
 	}).click(function() {
 		// show select when clicking in a focused field
-		if ( hasFocus++ > 1 && !select.visible() ) {
-			onChange(0, true);
+		// but if clickFire is true, don't require field
+		// to be focused to begin with; just show select
+		if( options.clickFire ) {
+		  if ( !select.visible() ) {
+  			onChange(0, true);
+  		}
+		} else {
+		  if ( hasFocus++ > 1 && !select.visible() ) {
+  			onChange(0, true);
+  		}
 		}
 	}).bind("search", function() {
 		// TODO why not just specifying both arguments?
@@ -428,6 +436,7 @@ $.Autocompleter.defaults = {
 	multiple: false,
 	multipleSeparator: " ",
 	inputFocus: true,
+	clickFire: false,
 	highlight: function(value, term) {
 		return value.replace(new RegExp("(?![^&;]+;)(?!<[^<>]*)(" + term.replace(/([\^\$\(\)\[\]\{\}\*\.\+\?\|\\])/gi, "\\$1") + ")(?![^<>]*>)(?![^&;]+;)", "gi"), "<strong>$1</strong>");
 	},
