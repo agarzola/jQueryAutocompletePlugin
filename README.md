@@ -18,6 +18,10 @@ This modification shouldn’t break any of the options discussed at the these do
 
 * Added option to forgo input focus on item select. `inputFocus` is set to true by default, but setting it to false in the options will cancel this behavior.
 
+* Circumvent browser JS bug when user clicked on results list scrollbar and then clicked outside of the list that caused the list to not hide.
+
+* Changed hijacking of PAGEUP/PAGEDOWN keys to prevent default behavior only when selections list is visible. Helps text navigation inside input element.
+
 ####1.2 --AGA####
 * Use recursive merging when extending setOptions. (Request/recommendation by smarques.)
 

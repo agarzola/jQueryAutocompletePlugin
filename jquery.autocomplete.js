@@ -100,7 +100,7 @@ $.Autocompleter = function(input, options) {
 		
 			case KEY.UP:
 				if ( select.visible() ) {
-					event.preventDefault(); // Moved from line 105. --AGA
+					event.preventDefault();
 					select.prev();
 				} else {
 					onChange(0, true);
@@ -109,7 +109,7 @@ $.Autocompleter = function(input, options) {
 				
 			case KEY.DOWN:
 				if ( select.visible() ) {
-					event.preventDefault(); // Moved from line 114. --AGA
+					event.preventDefault();
 					select.next();
 				} else {
 					onChange(0, true);
@@ -117,8 +117,8 @@ $.Autocompleter = function(input, options) {
 				break;
 				
 			case KEY.PAGEUP:
-				event.preventDefault();
 				if ( select.visible() ) {
+  				event.preventDefault();
 					select.pageUp();
 				} else {
 					onChange(0, true);
@@ -126,8 +126,8 @@ $.Autocompleter = function(input, options) {
 				break;
 				
 			case KEY.PAGEDOWN:
-				event.preventDefault();
 				if ( select.visible() ) {
+  				event.preventDefault();
 					select.pageDown();
 				} else {
 					onChange(0, true);
@@ -604,7 +604,15 @@ $.Autocompleter.Select = function (options, input, select, config) {
 		.hide()
 		.addClass(options.resultsClass)
 		.css("position", "absolute")
-		.appendTo(document.body);
+		.appendTo(document.body)
+		.hover(function(event) {
+		  // Browsers except FF do not fire mouseup event on scrollbars, resulting in mouseDownOnSelect remaining true, and results list not always hiding.
+		  if($(this).is(":visible")) {
+		    input.focus();
+		  }
+		  config.mouseDownOnSelect = false;
+			console.debug(config.mouseDownOnSelect);
+		});
 	
 		list = $("<ul/>").appendTo(element).mouseover( function(event) {
 			if(target(event).nodeName && target(event).nodeName.toUpperCase() == 'LI') {
