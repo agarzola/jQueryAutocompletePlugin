@@ -65,6 +65,11 @@ $.Autocompleter = function(input, options) {
 		PAGEDOWN: 34,
 		BACKSPACE: 8
 	};
+	
+	var globalFailure = null;
+	if(options.failure != null && typeof options.failure == "function") {
+	  globalFailure = options.failure;
+	}
 
 	// Create $ object for input element
 	var $input = $(input).attr("autocomplete", "off").addClass(options.inputClass);
@@ -388,7 +393,12 @@ $.Autocompleter = function(input, options) {
 		} else {
 			// if we have a failure, we need to empty the list -- this prevents the the [TAB] key from selecting the last successful match
 			select.emptyList();
-			failure(term);
+			if(globalFailure != null) {
+        globalFailure();
+      }
+      else {
+        failure(term);
+			}
 		}
 	};
 	
