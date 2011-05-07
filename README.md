@@ -13,6 +13,13 @@ Introduction to the original plugin, and an explanation of original plugin optio
 This modification shouldn’t break any of the options discussed at the these documentation files.
 
 ##Abridged Changelog##
+####1.2.2 --AGA####
+* Merged agmcleaod’s fork: Added failure to the options hash: `failure`
+
+* Merged borkor’s fork: New option not to jump to first or last position: `scrollJumpPosition`
+
+* Deleted silly console.debug() line left over from testing.
+
 ####1.2.1 --AGA####
 * Added option to activate select list with one click instead of two. `clickFire` is false by default. (Requested/recommendation by fgosfacdjtq.)
 
