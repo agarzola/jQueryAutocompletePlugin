@@ -611,7 +611,6 @@ $.Autocompleter.Select = function (options, input, select, config) {
 		    input.focus();
 		  }
 		  config.mouseDownOnSelect = false;
-			console.debug(config.mouseDownOnSelect);
 		});
 	
 		list = $("<ul/>").appendTo(element).mouseover( function(event) {
