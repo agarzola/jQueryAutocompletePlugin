@@ -441,7 +441,8 @@ $.Autocompleter.defaults = {
 		return value.replace(new RegExp("(?![^&;]+;)(?!<[^<>]*)(" + term.replace(/([\^\$\(\)\[\]\{\}\*\.\+\?\|\\])/gi, "\\$1") + ")(?![^<>]*>)(?![^&;]+;)", "gi"), "<strong>$1</strong>");
 	},
     scroll: true,
-    scrollHeight: 180
+    scrollHeight: 180,
+    scrollJumpPosition: true
 };
 
 $.Autocompleter.Cache = function(options) {
@@ -664,13 +665,16 @@ $.Autocompleter.Select = function (options, input, select, config) {
 	};
 	
 	function movePosition(step) {
-		active += step;
-		if (active < 0) {
-			active = listItems.size() - 1;
-		} else if (active >= listItems.size()) {
-			active = 0;
-		}
+		if (options.scrollJumpPosition || (!options.scrollJumpPosition && !((step < 0 && active == 0) || (step > 0 && active == listItems.size() - 1)) )) {
+			active += step;
+			if (active < 0) {
+				active = listItems.size() - 1;
+			} else if (active >= listItems.size()) {
+				active = 0;
+			}
+		} 
 	}
+
 	
 	function limitNumberOfItems(available) {
 		return options.max && options.max < available
