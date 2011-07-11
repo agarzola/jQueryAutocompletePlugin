@@ -1,5 +1,5 @@
 /*
- * jQuery Autocomplete plugin 1.2.1
+ * jQuery Autocomplete plugin 1.2.2
  *
  * Copyright (c) 2009 Jörn Zaefferer
  *
