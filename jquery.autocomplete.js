@@ -224,7 +224,7 @@ $.Autocompleter = function(input, options) {
 		previousValue = v;
 		
 		if ( options.multiple ) {
-			var words = trimWords($input.val());
+			var words = $input.val().split(options.multipleSeparator);
 			if ( words.length > 1 ) {
 				var seperator = options.multipleSeparator.length;
 				var cursorAt = $(input).selection().start;
