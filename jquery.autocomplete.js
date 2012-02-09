@@ -248,6 +248,11 @@ $.Autocompleter = function(input, options) {
 		$input.val(v);
 		hideResultsNow();
 		$input.trigger("result", [selected.data, selected.value]);
+
+        if (options.afterItemSelected) {
+          options.afterItemSelected(selected, $input);
+        }
+		
 		return true;
 	}
 	
