@@ -1,11 +1,7 @@
-#jQuery Autocomplete Plugin 1.2.2#
+#jQuery Autocomplete Plugin 1.2.3#
 
 ##About this jQuery plugin##
-Jörn Zaefferer’s (now deprecated into jQuery UI) [jQuery Autocomplete Plugin](http://bassistance.de/jquery-plugins/jquery-plugin-autocomplete/), with a small modification to enable UP/DOWN arrow keys, allowing navigation of input element text. This is particularly useful in cases where autocomplete is used in a textarea element where navigation of text via UP/DOWN arrow keys may be necessary. The tiny fix is documented with comments in the relevant lines on the development file (jquery.autocomplete.js). The .min and .pack files have the fix without specific annotation within the code.
-
-We use it in Claritty.com for when a user wants to write a twitter username or a previously used hashtag within a new tweet, so “@” and “#” are trigger the script. While not triggered, though, the plugin still hijacks the UP/DOWN arrow keys making navigation of the text a pain in the ass when the user has multiple lines. This modification prevents this behavior, hijacking the arrow keys only when the autocomplete script has been triggered.
-
-The original plugin is now deprecated, but this mod works well with jQuery 1.3.2 thru 1.4.4.
+Jörn Zaefferer’s (now deprecated into jQuery UI) [jQuery Autocomplete Plugin](http://bassistance.de/jquery-plugins/jquery-plugin-autocomplete/), with some modifications (see changelog).
 
 ##Documentation##
 Introduction to the original plugin, and an explanation of original plugin options are included in the docs folder. (Documentation at the jQuery site is expected to shut down eventually.)
@@ -13,6 +9,15 @@ Introduction to the original plugin, and an explanation of original plugin optio
 This modification shouldn’t break any of the options discussed at the these documentation files.
 
 ##Abridged Changelog##
+####1.2.3 --MLA####
+* Added launchManual() method which allows you to force the autocomplete
+  to appear without user interaction
+
+* Added refresh() method which reloads the autocomplete results
+
+* Added afterItemSelect callback option which is called when an item
+  is selected from the autocomplete results
+
 ####1.2.2 --AGA####
 * Merged agmcleaod’s fork: Added failure to the options hash: `failure`
 
