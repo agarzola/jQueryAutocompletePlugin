@@ -1,3 +1,17 @@
+1.2.3 --MLA
+
+* Added launchManual() method which allows you to force the autocomplete
+  to appear without user interaction. Based on code from
+  stackoverflow.com/questions/3624518/open-autocompleter-results-div-on-textbox-click
+
+* Added refresh() method which reloads the autocomplete results. This is
+  being used to modify/results the results based on other form elements.
+
+* Added afterItemSelect callback option which is called when an item
+  is selected from the autocomplete results. This is being used to set
+  a separate hidden form element to keep track of a record ID behind
+  the scenes.
+
 1.2.2 --AGA
 ---
 *Merged agmcleaod's fork: Added failure to the options hash: `failure`
