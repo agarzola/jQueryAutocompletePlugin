@@ -1,7 +1,7 @@
 #jQuery Autocomplete Plugin 1.2.3#
 
 ##About this jQuery plugin##
-Jörn Zaefferer’s (now deprecated into jQuery UI) [jQuery Autocomplete Plugin](http://bassistance.de/jquery-plugins/jquery-plugin-autocomplete/), with some modifications (see changelog).
+Jörn Zaefferer’s (now deprecated into jQuery UI) [jQuery Autocomplete Plugin](http://bassistance.de/jquery-plugins/jquery-plugin-autocomplete/) with various modifications (see changelog).
 
 ##Documentation##
 Introduction to the original plugin, and an explanation of original plugin options are included in the docs folder. (Documentation at the jQuery site is expected to shut down eventually.)
