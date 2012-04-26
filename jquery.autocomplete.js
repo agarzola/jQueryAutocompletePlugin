@@ -1,5 +1,8 @@
 /*
- * jQuery Autocomplete plugin 1.2.2
+ * jQuery Autocomplete plugin 1.2.3
+ *
+ * THIS IS A FORKED VERSION
+ * https://github.com/mla/jQueryAutocompletePlugin
  *
  * Copyright (c) 2009 Jörn Zaefferer
  *
@@ -7,9 +10,11 @@
  *   http://www.opensource.org/licenses/mit-license.php
  *   http://www.gnu.org/licenses/gpl.html
  *
- * With small modifications by Alfonso Gómez-Arzola.
- * See changelog for details.
+ * Modifications by:
+ *   Alfonso Gómez-Arzola
+ *   Maurice Aubrey
  *
+ * See changelog for details.
  */
 
 ;(function($) {
@@ -48,6 +53,13 @@ $.fn.extend({
   },
   unautocomplete: function() {
     return this.trigger("unautocomplete");
+  },
+  // stackoverflow.com/questions/3624518/open-autocompleter-results-div-on-textbox-click
+  launchManual: function() {
+    return this.trigger("launchManual");
+  },
+  refresh: function() {
+    return this.trigger("refresh");
   }
 });
 
@@ -212,8 +224,19 @@ $.Autocompleter = function(input, options) {
     select.unbind();
     $input.unbind();
     $(input.form).unbind(".autocomplete");
+  }).bind("launchManual", function() {
+    hideResultsNow(); // in case already showing
+    $input.focus();
+    if (!cache.load($input.val())) {
+      cache.flush();
+      cache.populate();
+    }
+    lastKeyPressCode = KEY.DOWN; // equivalent of 40 (down arrow) 
+    onChange(0, true);
+  }).bind("refresh", function() {
+    $input.flushCache();
+    $input.launchManual();
   });
-  
   
   function selectCurrent() {
     var selected = select.selected();
