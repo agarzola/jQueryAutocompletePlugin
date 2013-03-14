@@ -21,7 +21,8 @@ $.fn.extend({
 			url: isUrl ? urlOrData : null,
 			data: isUrl ? null : urlOrData,
 			delay: isUrl ? $.Autocompleter.defaults.delay : 10,
-			max: options && !options.scroll ? 10 : 150
+			max: options && !options.scroll ? 10 : 150,
+			noRecord: "No Records."
 		}, options);
 
 		// if highlight is set to false, replace it with a do-nothing function
@@ -361,8 +362,14 @@ $.Autocompleter = function(input, options) {
 			term = term.toLowerCase();
 		var data = cache.load(term);
 		// recieve the cached data
-		if (data && data.length) {
-			success(term, data);
+		if (data) {
+			if(data.length)	{
+				success(term, data);
+			}
+			else{
+				var parsed = options.parse && options.parse(options.noRecord) || parse(options.noRecord);	
+				success(term,parsed);
+			}
 		// if an AJAX url has been supplied, try loading the data now
 		} else if( (typeof options.url == "string") && (options.url.length > 0) ){
 
