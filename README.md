@@ -1,4 +1,4 @@
-#jQuery Autocomplete Plugin 1.2.2#
+#jQuery Autocomplete Plugin 1.2.3#
 
 ##About this jQuery plugin##
 Jörn Zaefferer’s (now deprecated into jQuery UI) [jQuery Autocomplete Plugin](http://bassistance.de/jquery-plugins/jquery-plugin-autocomplete/), with a small modification to enable UP/DOWN arrow keys, allowing navigation of input element text. This is particularly useful in cases where autocomplete is used in a textarea element where navigation of text via UP/DOWN arrow keys may be necessary. The tiny fix is documented with comments in the relevant lines on the development file (jquery.autocomplete.js). The .min and .pack files have the fix without specific annotation within the code.
@@ -13,6 +13,15 @@ Introduction to the original plugin, and an explanation of original plugin optio
 This modification shouldn’t break any of the options discussed at the these documentation files.
 
 ##Abridged Changelog##
+####1.2.3 --AGA####
+* Merged disc’s fork: Removed depricated $.browser (jquery 1.9+)
+
+* Merged miketaylr’s fork: account for retooled key events handling in newer Opera
+
+* Correct typo introduced in one of the previous merges
+
+* New minified and packed versions
+
 ####1.2.2 --AGA####
 * Merged agmcleaod’s fork: Added failure to the options hash: `failure`
 
