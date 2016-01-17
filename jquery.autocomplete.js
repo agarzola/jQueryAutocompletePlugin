@@ -22,7 +22,7 @@ $.fn.extend({
 			data: isUrl ? null : urlOrData,
 			delay: isUrl ? $.Autocompleter.defaults.delay : 10,
 			max: options && !options.scroll ? 10 : 150,
-			noRecord: "No Records."
+			noRecord: options && options.showNoResults ? "No Records." : ""
 		}, options);
 
 		// if highlight is set to false, replace it with a do-nothing function
