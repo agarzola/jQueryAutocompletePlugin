@@ -583,7 +583,7 @@ $.Autocompleter.Cache = function(options) {
 				return data[q];
 			} else
 			if (options.matchSubset) {
-				for (var i = q.length - 1; i >= options.minChars; i--) {
+				for (var i = q.length - 1; i >= options.minChars - 1; i--) {
 					var c = data[q.substr(0, i)];
 					if (c) {
 						var csub = [];
